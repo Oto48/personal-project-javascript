@@ -21,7 +21,7 @@ const Subject = class{
 const LMS = class{
     list:any = new Set();
 
-    add(object:{}){
+    add(object:object){
         if(typeof object !== 'object'){
             console.log('error')
         }else{
@@ -37,14 +37,14 @@ const LMS = class{
         })
     }
 
-    verify(subject:{}){
+    verify(subject:object){
         const object = subject;
         const find = this.list;
         return find.has(object)
     }
 
     readAll(){
-        let list:{}[] = [];
+        let list:object[] = [];
         let LMSlist = this.list;
         LMSlist.forEach((e:{id:number, title:string, lessons:number, description?:string}) => {
             console.log(e)
@@ -83,3 +83,5 @@ lms.remove(a);
 // console.log(lms.readAll());
 
 // console.log(lms)
+
+export{Subject, LMS, lms, math, art, physics, chemistry}

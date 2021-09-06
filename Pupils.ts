@@ -36,7 +36,7 @@ const Pupils = class {
         return object;
     }
 
-    update(id:number, value:{}){
+    update(id:number, value:object){
         let object:any;
         this.data.forEach((value:{id:number}) => {
             if(value.id === id){

@@ -1,6 +1,9 @@
 var _a;
 import { groups, groupId, group2Id } from "./Groups.js";
-import { pupil, pupil2, pupil3, pupil4 } from './Pupils.js';
+import { pupil, pupil2, pupil3, pupil4 } from "./Pupils.js";
+import { lms, math, art, physics, chemistry } from "./LMS.js";
+import { teachers, teacherId, teacher2Id, teacher3Id, teacher4Id } from "./Teachers.js";
+;
 const Gradebooks = (_a = class {
         constructor(groups, teachers, lms) {
             this.gradebooks = new Set();

@@ -25,7 +25,7 @@ type teacherObject = {
     }
   
     read(id:number){
-      let object:{} | undefined;
+      let object:object | undefined;
       this.data.forEach((value:{id:number}) => {
           if(value.id === id){
             object = value;
@@ -242,3 +242,4 @@ type teacherObject = {
     
     // console.log(teachers.data)
   
+    export{Teacher, teachers, teacherId, teacher2Id, teacher3Id, teacher4Id}

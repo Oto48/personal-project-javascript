@@ -1,12 +1,27 @@
-import {Groups, groups, groupId , group2Id} from "./Groups.js"
+import {Groups, groups, groupId , group2Id} from "./Groups.js";
 
-import {pupil, pupil2, pupil3, pupil4} from './Pupils.js';
+import {pupil, pupil2, pupil3, pupil4} from "./Pupils.js";
+
+import{Subject, LMS, lms, math, art, physics, chemistry} from "./LMS.js";
+
+import{Teacher, teachers, teacherId, teacher2Id, teacher3Id, teacher4Id} from "./Teachers.js";
+
+
+interface records {
+    // [key: string]: any;
+    pupilId: number;
+    teacherId: number;
+    subjectId: number;
+    lesson: number;
+    mark: number;
+};
+
 
 const Gradebooks = class {
-    groups:object;
-    teachers:object;
-    lms:object;
-    constructor(groups:object,teachers:object,lms:object){
+    groups:any;
+    teachers:any;
+    lms:any;
+    constructor(groups:any,teachers:any,lms:any){
         this.groups = groups;
         this.teachers = teachers;
         this.lms = lms;
@@ -33,30 +48,30 @@ const Gradebooks = class {
         this.gradebooks.clear()
     }
 
-    addRecord(id:number,record:{[key: string]: any;}){
+    addRecord(id:number,record:records){
         let findId;
         let findpupil;
-        this.gradebooks.forEach((value:{id:number, group:{[key: string]: any;}}) => {
+        this.gradebooks.forEach((value:{records:any, id:number, group:{[key: string]: any;}}) => {
             if(value.id === id){
-                findId = value
-                value.group.pupils.forEach((pupil:{id:number}) =>{
+                findId = value;
+                value.group.pupils.forEach((pupil:{id:number, name:{first:string, last:string},}) =>{
                     if(record.pupilId === pupil.id){
                         findpupil = pupil;
                         for(let i = 0; i < value.records.length; i++){
                             if(value.records[i].id === pupil.id){
-                                const pupilrecord2 = {};
-                                let sub
-                                this.teachers.data.forEach((value) =>{
+                                const pupilrecord2:{[key: string]: any;} = {};
+                                let sub:any;
+                                this.teachers.data.forEach((value:{id:number, name:any}) =>{
                                     if(value.id === record.teacherId){
                                         sub = value;
                                         pupilrecord2.teacher = value.name.first+" "+value.name.last;
                                     }
                                 })
-                                let checksubject;
-                                this.lms.list.forEach((value) =>{
+                                let checksubject:any;
+                                this.lms.list.forEach((value:{id:number, title:string}) =>{
                                     if(value.id === record.subjectId){
                                         let subjectname = value.title;
-                                        sub.subjects.forEach((value) => {
+                                        sub.subjects.forEach((value:{subject:string}) => {
                                             if(value.subject === subjectname){
                                                 checksubject = value.subject
                                             }
@@ -72,23 +87,23 @@ const Gradebooks = class {
                                 return value.records[i].records.push(pupilrecord2)
                             }
                         }
-                        const pupilrecord = {};
+                        const pupilrecord:{[key: string]: any;} = {};
                         pupilrecord.id = pupil.id;
                         pupilrecord.name = pupil.name.first+" "+pupil.name.last;
                         pupilrecord.records = [];
-                        const pupilrecord2 = {};
-                        let sub
-                        this.teachers.data.forEach((value) =>{
+                        const pupilrecord2:{[key: string]: any;} = {};
+                        let sub:{[key: string]: any;};
+                        this.teachers.data.forEach((value:{id:number, name:{first:string, last:string}}) =>{
                             if(value.id === record.teacherId){
                                 sub = value;
                                 pupilrecord2.teacher = value.name.first+" "+value.name.last;
                             }
                         })
-                        let checksubject;
-                        this.lms.list.forEach((value) =>{
+                        let checksubject:any;
+                        this.lms.list.forEach((value:{id:number, title:string}) =>{
                             if(value.id === record.subjectId){
                                 let subjectname = value.title;
-                                sub.subjects.forEach((value) => {
+                                sub.subjects.forEach((value:{subject:any}) => {
                                     if(value.subject === subjectname){
                                         checksubject = value.subject
                                     }
@@ -106,8 +121,8 @@ const Gradebooks = class {
                     }
                 })
             }
-
         })
+
         if(typeof findId === 'undefined'){
             throw new Error('id does not exist')
         }
@@ -132,9 +147,9 @@ const Gradebooks = class {
         })
     }
 
-    readAll(id){
-        let object;
-        this.gradebooks.forEach((value) => {
+    readAll(id:number){
+        let object:any;
+        this.gradebooks.forEach((value:{id:number}) => {
             if(value.id === id){
                 object = value;
             }
@@ -142,8 +157,8 @@ const Gradebooks = class {
         if(typeof object === 'undefined'){
             throw new Error('id does not exist')
         }
-        let arr = []
-        object.records.forEach((value) =>{
+        let arr:object[] = []
+        object.records.forEach((value:object) =>{
             arr.push(value)
         })
         return arr;
@@ -176,7 +191,6 @@ const record2 = {
   lesson: 3,
   mark: 8
 };
-
 
 const record3 = {
   pupilId: pupil3Id,

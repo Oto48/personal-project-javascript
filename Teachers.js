@@ -1,4 +1,3 @@
-"use strict";
 const Teacher = class {
     constructor() {
         this.data = new Set();
@@ -215,3 +214,4 @@ const updatedProfile = {
 const teacherId2 = teachers.update(teacherId, updatedProfile);
 teachers.read(teacherId2);
 // console.log(teachers.data)
+export { Teacher, teachers, teacherId, teacher2Id, teacher3Id, teacher4Id };

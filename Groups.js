@@ -93,6 +93,6 @@ groups.addPupil(group2Id, pupil4);
 groups.update(groupId, {
     room: 237
 });
-groups.removePupil(groupId, pupil.id);
+// groups.removePupil(groupId, pupil.id);
 console.log(groups.readAll());
 export { Groups, groups, groupId, group2Id };

@@ -46,7 +46,7 @@ const Groups = class {
     }
 
     addPupil(id:number,pupil:object){
-        this.data.forEach((value:{id:number,pupils:{}[]}) => {
+        this.data.forEach((value:{id:number,pupils:object[]}) => {
             if(value.id === id){
                 value.pupils.push(pupil)
             }
@@ -54,8 +54,8 @@ const Groups = class {
     }
 
     readAll(){
-        let arr:{}[] = [];
-        this.data.forEach((value:{}) => {
+        let arr:object[] = [];
+        this.data.forEach((value:object) => {
             arr.push(value)
         })
         return arr;
@@ -109,7 +109,7 @@ groups.update(groupId, {
 });
 
 
-groups.removePupil(groupId, pupil.id);
+// groups.removePupil(groupId, pupil.id);
 
 console.log(groups.readAll())
 

@@ -1,4 +1,3 @@
-"use strict";
 var _a;
 const Subject = (_a = class {
         constructor(title, lessons, description) {
@@ -73,3 +72,4 @@ lms.remove(a);
 // console.log(lms.verify(math))
 // console.log(lms.readAll());
 // console.log(lms)
+export { Subject, LMS, lms, math, art, physics, chemistry };
