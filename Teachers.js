@@ -213,5 +213,5 @@ const updatedProfile = {
     dateOfBirth: '05 10 1987',
 };
 const teacherId2 = teachers.update(teacherId, updatedProfile);
-// teachers.read(teacherId2)
-console.log(teachers.data);
+teachers.read(teacherId2);
+// console.log(teachers.data)

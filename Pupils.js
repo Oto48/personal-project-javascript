@@ -1,4 +1,5 @@
 var _a;
+;
 const Pupils = (_a = class {
         constructor() {
             this.data = new Set();
@@ -138,7 +139,7 @@ const pupildata5 = {
     "description": "string"
 };
 const pupils = new Pupils();
-export const pupil = pupils.add(pupildata);
+const pupil = pupils.add(pupildata);
 const pupil2 = pupils.add(pupildata2);
 const pupil3 = pupils.add(pupildata3);
 const pupil4 = pupils.add(pupildata4);
@@ -154,3 +155,4 @@ const pupilupdatedProfile = {
 };
 pupils.update(pupil2.id, pupilupdatedProfile);
 // console.log(pupils.data)
+export { pupil, pupil2, pupil3, pupil4 };

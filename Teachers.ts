@@ -25,8 +25,8 @@ type teacherObject = {
     }
   
     read(id:number){
-      let object:{};
-      this.data.forEach((value) => {
+      let object:{} | undefined;
+      this.data.forEach((value:{id:number}) => {
           if(value.id === id){
             object = value;
           }
@@ -38,8 +38,8 @@ type teacherObject = {
     }
   
     update(id:number, value:object){
-      let object;
-      this.data.forEach((value) => {
+      let object:any;
+      this.data.forEach((value:{id:number}) => {
           if(value.id === id){
             object = value;
           }
@@ -61,7 +61,7 @@ type teacherObject = {
   
     remove(id:number){
       let object;
-      this.data.forEach((value) => {
+      this.data.forEach((value:{id:number}) => {
         if(value.id === id){
           object = value;
         }
@@ -238,7 +238,7 @@ type teacherObject = {
     }
     
     const teacherId2 = teachers.update(teacherId, updatedProfile)
-    // teachers.read(teacherId2)
+    teachers.read(teacherId2)
     
-    console.log(teachers.data)
+    // console.log(teachers.data)
   

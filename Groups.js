@@ -1,5 +1,5 @@
 var _a;
-import { pupil } from './Pupils.js';
+import { pupil, pupil2, pupil3, pupil4 } from './Pupils.js';
 const Groups = (_a = class {
         constructor() {
             this.data = new Set();
@@ -65,7 +65,7 @@ const Groups = (_a = class {
                 }
             });
             let removepupil;
-            object.pupils.forEach(element => {
+            object.pupils.forEach((element) => {
                 if (element.id === pupil) {
                     removepupil = element.id;
                 }
@@ -73,7 +73,7 @@ const Groups = (_a = class {
             if (typeof removepupil === 'undefined') {
                 throw new Error("pupil id is not correct");
             }
-            object.pupils = object.pupils.filter(el => el.id !== removepupil);
+            object.pupils = object.pupils.filter((el) => el.id !== removepupil);
             return object.pupils;
         }
     },
@@ -84,14 +84,15 @@ const room2 = 420;
 const groups = new Groups();
 const groupId = groups.add(room);
 const group2Id = groups.add(room2);
-// console.log(groups)
+console.log(groups);
 console.log(pupil);
-// groups.addPupil(groupId, pupil);
-// groups.addPupil(groupId, pupil2);
-// groups.addPupil(group2Id, pupil3);
-// groups.addPupil(group2Id, pupil4);
-// groups.update(groupId, {
-//   room: 237
-// });
-// groups.removePupil(groupId, pupil.id);
-// console.log(groups.readAll())
+groups.addPupil(groupId, pupil);
+groups.addPupil(groupId, pupil2);
+groups.addPupil(group2Id, pupil3);
+groups.addPupil(group2Id, pupil4);
+groups.update(groupId, {
+    room: 237
+});
+groups.removePupil(groupId, pupil.id);
+console.log(groups.readAll());
+export { Groups, groups, groupId, group2Id };

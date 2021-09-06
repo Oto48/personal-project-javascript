@@ -43,7 +43,7 @@ const LMS = class {
     readAll() {
         let list = [];
         let LMSlist = this.list;
-        LMSlist.forEach(e => {
+        LMSlist.forEach((e) => {
             console.log(e);
             const object = {};
             object.subjectId = e.id;

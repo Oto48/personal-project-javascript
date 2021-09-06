@@ -1,5 +1,5 @@
-type pupilObject = {
-    id?:number,
+interface pupilObject {
+    [key: string]: any;
     name:{first:string; last:string},
     image:string,
     dateOfBirth: string,
@@ -23,9 +23,9 @@ const Pupils = class {
         this.data.add(object);
         return object;
     }
-    read(id){
+    read(id:number){
         let object;
-        this.data.forEach((value) => {
+        this.data.forEach((value:{id:number}) => {
             if(value.id === id){
                 object = value;
             }
@@ -36,9 +36,9 @@ const Pupils = class {
         return object;
     }
 
-    update(id,value){
-        let object;
-        this.data.forEach((value) => {
+    update(id:number, value:{}){
+        let object:any;
+        this.data.forEach((value:{id:number}) => {
             if(value.id === id){
               object = value;
             }
@@ -58,9 +58,9 @@ const Pupils = class {
         return object;
     }
 
-    remove(id){
+    remove(id:number){
         let object;
-        this.data.forEach((value) => {
+        this.data.forEach((value:{id:number}) => {
             if(value.id === id){
                 object = value;
             }
@@ -159,7 +159,7 @@ const pupildata5 = {
 
 const pupils = new Pupils();
 
-export const pupil = pupils.add(pupildata);
+const pupil = pupils.add(pupildata);
 
 const pupil2 = pupils.add(pupildata2);
 
@@ -184,3 +184,5 @@ const pupilupdatedProfile = {
 
 pupils.update(pupil2.id, pupilupdatedProfile)
 // console.log(pupils.data)
+
+export{pupil, pupil2, pupil3, pupil4}
